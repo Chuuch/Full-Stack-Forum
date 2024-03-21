@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import path from "path";
+import userRouter from "./routes/user.route.js";
+import authRouter from "./routes/auth.route.js";
+import postRouter from "./routes/post.route.js";
 
 dotenv.config();
 const port = process.env.PORT;
@@ -24,6 +27,10 @@ app.use(cookieParser());
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+app.use("/api/user", userRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/post", postRouter);
 
 app.use(express.static(path.join(__dirname, "/client/dist")));
 app.get("*", (req, res) => {
