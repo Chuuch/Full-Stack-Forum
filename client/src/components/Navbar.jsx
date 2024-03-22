@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { FaDev } from "react-icons/fa";
 import SearchBar from "./SearchBar";
 import UserAvatar from "./UserAvatar";
 import Clock from "./Clock";
 import NotificationsDropdown from "./NotificationsDropdown";
 const Navbar = () => {
-  //   const { currentUser } = useSelector((state) => state.user);
-  //   const navigate = useNavigate();
+  const { currentUser } = useSelector((state) => state.user);
 
   return (
     <div className="flex flex-row items-center justify-between p-3 bg-[#04102e] h-24">
@@ -37,8 +36,14 @@ const Navbar = () => {
       </div>
       <div className="flex items-center justify-center gap-x-1">
         <SearchBar />
-        <NotificationsDropdown />
-        <UserAvatar />
+        {currentUser ? (
+          <>
+            <NotificationsDropdown />
+            <UserAvatar />
+          </>
+        ) : (
+          <Link to="/register">Sign Up / Sign In</Link>
+        )}
       </div>
     </div>
   );
