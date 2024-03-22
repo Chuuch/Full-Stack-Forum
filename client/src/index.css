@@ -1,8 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
+@import "react-alice-carousel/lib/alice-carousel.css";
 @tailwind base;
 @tailwind utilities;
 @tailwind components;
 
+:root,
+html,
 body {
   @apply bg-[#020817] text-gray-300;
 }
