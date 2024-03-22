@@ -5,12 +5,36 @@ import { CiUser } from "react-icons/ci";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import {
+  signOutUserStart,
+  deleteUserSuccess,
+  deleteUserFailure,
+} from "../redux/user/userSlice.js";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Dropdown() {
+  const dispatch = useDispatch();
+
+  const handleSignOut = async () => {
+    try {
+      dispatch(signOutUserStart());
+      const res = await fetch("/api/auth/signout");
+      const data = await res.json();
+
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
+    }
+  };
+
   return (
     <Menu as="div" className="relative inline-block text-left items-center">
       <div>
@@ -79,6 +103,7 @@ export default function Dropdown() {
               {({ active }) => (
                 <a
                   href="/login"
+                  onClick={handleSignOut}
                   className={classNames(
                     active ? "bg-gray-700 text-gray-400" : "text-gray-400",
                     "inline-flex items-center justify-start gap-x-10 px-4 w-full py-2 text-sm"
