@@ -26,7 +26,9 @@ const SinglePost = () => {
             <GoInfo size={25} className="cursor-pointer" />
           </div>
           <div>
-            <BiDotsVerticalRounded size={25} className="cursor-pointer" />
+            <BiDotsVerticalRounded
+            size={25} 
+            className="cursor-pointer" />
           </div>
         </div>
       </div>
