@@ -12,7 +12,7 @@ const Register = () => {
   const handleChange = async (e) => {
     setFormData({
       ...formData,
-      [e.targe.id]: e.target.value,
+      [e.target.id]: e.target.value,
     });
   };
 
@@ -27,7 +27,7 @@ const Register = () => {
         },
         body: JSON.stringify(formData),
       });
-      const data = res.json();
+      const data = await res.json();
       console.log(data);
 
       if (data.success === false) {
@@ -101,7 +101,6 @@ const Register = () => {
             <button
               className="bg-gradient-to-r from-sky-700 to-sky-500 rounded-xl w-full h-8 hover:from-sky-600 hover:to-sky-400"
               disabled={loading}
-              type="submit"
             >
               {loading ? "Loading..." : "Submit"}
             </button>
