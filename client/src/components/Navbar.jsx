@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaDev } from "react-icons/fa";
 import SearchBar from "./SearchBar";
-import UserAvatar from "./UserAvatar";
+import UserDropdown from "./UserDropdown.jsx";
 import Clock from "./Clock";
 import NotificationsDropdown from "./NotificationsDropdown";
 const Navbar = () => {
@@ -39,7 +39,7 @@ const Navbar = () => {
         {currentUser ? (
           <>
             <NotificationsDropdown />
-            <UserAvatar />
+            <UserDropdown />
           </>
         ) : (
           <Link to="/register">Sign Up / Sign In</Link>
