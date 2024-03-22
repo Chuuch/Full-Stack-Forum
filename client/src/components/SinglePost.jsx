@@ -2,7 +2,7 @@ import UserAvatar from "../components/UserAvatar.jsx";
 import { AiOutlineLike } from "react-icons/ai";
 import { GoComment } from "react-icons/go";
 import { GoInfo } from "react-icons/go";
-import { BiDotsVerticalRounded } from "react-icons/bi";
+import PostDropdown from "./PostDropdown.jsx";
 
 const SinglePost = () => {
   return (
@@ -20,15 +20,13 @@ const SinglePost = () => {
         </div>
         <p className="text-xs text-gray-500">posted by: user</p>
         <div className="flex flex-row items-center justify-center space-x-96">
-          <div className="flex flex-row items-center justify-center gap-x-2 mt-2">
+          <div className="flex flex-row items-center justify-center gap-x-2">
             <AiOutlineLike size={25} className="cursor-pointer" />
             <GoComment size={25} className="cursor-pointer" />
             <GoInfo size={25} className="cursor-pointer" />
           </div>
           <div>
-            <BiDotsVerticalRounded
-            size={25} 
-            className="cursor-pointer" />
+            <PostDropdown />
           </div>
         </div>
       </div>
