@@ -14,6 +14,7 @@ import Admin from "./pages/Admin.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import UserProfile from "./pages/UserProfile.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 
 const App = () => {
   return (
@@ -25,10 +26,12 @@ const App = () => {
         <Route path="/forum" element={<Forum />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/admin" element={<Admin />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/admin" element={<Admin />} />
+        </Route>
         <Route />
       </Routes>
       <Outlet />
