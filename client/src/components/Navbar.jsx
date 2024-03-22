@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 // import { useSelector } from "react-redux";
 import { FaDev } from "react-icons/fa";
 import SearchBar from "./SearchBar";
-import Notifications from "./Notifications";
 import UserAvatar from "./UserAvatar";
 import Clock from "./Clock";
+import NotificationsDropdown from "./NotificationsDropdown";
 const Navbar = () => {
   //   const { currentUser } = useSelector((state) => state.user);
   //   const navigate = useNavigate();
@@ -35,12 +35,10 @@ const Navbar = () => {
           Admin
         </Link>
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center gap-x-1">
         <SearchBar />
-        <Notifications />
-        <Link to="/profile">
-          <UserAvatar />
-        </Link>
+        <NotificationsDropdown />
+        <UserAvatar />
       </div>
     </div>
   );
