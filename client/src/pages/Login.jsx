@@ -69,14 +69,14 @@ const Login = () => {
               id="email"
               placeholder="Email"
               onChange={handleChange}
-              className="rounded-xl p-1 bg-gray-700 w-64 px-2 outline-none border-none focus:outline-sky-500"
+              className="rounded-xl p-1 bg-gray-700 w-64 px-2 outline-none border-none focus:outline-gray-400"
             />
             <input
               type="password"
               id="password"
               placeholder="Password"
               onChange={handleChange}
-              className="rounded-xl p-1 bg-gray-700 w-64 px-2 outline-none border-none focus:outline-sky-500"
+              className="rounded-xl p-1 bg-gray-700 w-64 px-2 outline-none border-none focus:outline-gray-400"
             />
             <div className="text-xs hover:text-gray-400 hover:underline cursor-pointer mr-32">
               <p className="flex text-left">Forgotten password?</p>
@@ -84,7 +84,7 @@ const Login = () => {
             <button
               disabled={loading}
               type="submit"
-              className="bg-gradient-to-r from-sky-700 to-sky-500 rounded-xl w-full h-8 hover:from-sky-600 hover:to-sky-400"
+              className="border border-gray-400 text-gray-400 transition-all rounded-xl w-full h-8 hover:border-gray-300 hover:text-gray-300"
             >
               {loading ? "Loading..." : "Submit"}
             </button>
