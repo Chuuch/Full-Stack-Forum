@@ -69,24 +69,7 @@ export const getPost = async (req, res, next) => {
 
 export const getPosts = async (req, res, next) => {
   try {
-    const limit = parseInt(req.query.limit) || 9;
-    const startIndex = parseInt(req.query.startIndex) || 0;
-
-    const searchTerm = req.query.searchTerm || "";
-    const sort = req.query.sort || "createdAt";
-    const order = req.query.order || "desc";
-
-    const posts = await Post.find({
-      title,
-      content,
-      likes,
-      comments,
-      category,
-      userRef,
-    })
-      .sort({ [sort]: order })
-      .limit(limit)
-      .skip(startIndex);
+    const posts = await Post.find({});
 
     return res.status(200).json(posts);
   } catch (error) {
