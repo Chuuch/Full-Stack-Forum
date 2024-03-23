@@ -15,7 +15,7 @@ const SinglePost = () => {
             description of the post or problem the user has.
           </p>
         </div>
-        <div className="flex flex-col mt-8">
+        <div className="flex flex-col mt-6">
           <UserAvatar />
         </div>
         <p className="text-xs text-gray-500">posted by: user</p>
