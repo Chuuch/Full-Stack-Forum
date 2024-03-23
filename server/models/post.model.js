@@ -60,8 +60,9 @@ const postSchema = new mongoose.Schema({
     },
   ],
   userRef: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
+    ref: "User",
   },
   createdAt: {
     type: Date,
