@@ -25,7 +25,7 @@ const SearchBar = () => {
               placeholder="Search"
               required
             />
-            <button className="bg-gradient-to-r from-sky-700 to-sky-500 hover:from-sky-600 hover:to-sky-400 rounded-full px-5 flex items-center justify-center">
+            <button className="border border-gray-400 hover:border-gray-300 hover:from-sky-600 text-gray-400 hover:text-gray-300 transition-all rounded-full px-5 flex items-center justify-center">
               Search
             </button>
           </div>
