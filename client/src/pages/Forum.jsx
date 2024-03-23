@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { MdOutlineFilterAlt } from "react-icons/md";
 import { LiaSortSolid } from "react-icons/lia";
@@ -6,8 +6,9 @@ import SinglePost from "../components/SinglePost.jsx";
 import CreatePostModal from "../components/CreatePostModal.jsx";
 import FilterPostsModal from "../components/FilterPostsModal.jsx";
 import SortPostsModal from "../components/SortPostsModal.jsx";
-
+import toast from "react-hot-toast";
 const Forum = () => {
+  const [posts, setPosts] = useState([]);
   const [isPostModalOpen, setPostModalOpen] = useState(false);
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [isSortModalOpen, setSortModalOpen] = useState(false);
@@ -35,6 +36,24 @@ const Forum = () => {
   const closeSortModal = () => {
     setSortModalOpen(false);
   };
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch("/api/post/get");
+        const postsData = await response.json();
+
+        if (!postsData) {
+          toast.error("An error occurred getting posts!");
+          throw new Error("An error occurred getting posts!");
+        }
+        setPosts(postsData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchPosts();
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -77,9 +96,9 @@ const Forum = () => {
         />
         <SortPostsModal isOpen={isSortModalOpen} onClose={closeSortModal} />
       </div>
-      <div className="mt-10">
-        <SinglePost />
-      </div>
+      {posts.map((post, index) => (
+        <SinglePost post={post} key={index} />
+      ))}
     </div>
   );
 };
