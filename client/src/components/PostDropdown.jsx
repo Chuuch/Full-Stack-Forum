@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { BiDotsVerticalRounded } from "react-icons/bi";
@@ -11,37 +12,18 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Dropdown() {
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-
-  const openEditModal = () => {
-    setIsEditModalOpen(true);
-  };
-
-  const closeEditModal = () => {
-    setIsEditModalOpen(false);
-  };
-
-  const openDeleteModal = () => {
-    setIsDeleteModalOpen(true);
-  };
-
-  const closeDeleteModal = () => {
-    setIsDeleteModalOpen(false);
-  };
-
+export default function Dropdown({ post }) {
+ 
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-transparent px-3 py-2 text-sm font-semibold shadow-sm">
           <BiDotsVerticalRounded size={25} className="cursor-pointer" />
         </Menu.Button>
-        <EditPostModal isOpen={isEditModalOpen} onClose={closeEditModal} />
-        <DeletePostModal
-          isOpen={isDeleteModalOpen}
-          onClose={closeDeleteModal}
-        />
+
+        
+
+       
       </div>
 
       <Transition
@@ -53,12 +35,12 @@ export default function Dropdown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-gray-600">
           <div className="py-1 flex-col">
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  href={`/forum/${post._id}`}
                   onClick={openEditModal}
                   className={classNames(
                     active ? "bg-gray-700 text-gray-400" : "text-gray-400",
@@ -66,7 +48,7 @@ export default function Dropdown() {
                   )}
                 >
                   Edit Post
-                  <CiEdit size={20} className="text-gray-200" />
+                  
                 </a>
               )}
             </Menu.Item>
