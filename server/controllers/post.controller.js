@@ -11,8 +11,7 @@ export const createPost = async (req, res, next) => {
 };
 
 export const deletePost = async (req, res, next) => {
-  const { id } = req.params;
-  const post = await Post.findById(id);
+  const post = await Post.findById(req.params.id);
 
   if (!post) {
     return next(errorHandler(404, "Post not found!"));
@@ -23,28 +22,22 @@ export const deletePost = async (req, res, next) => {
   }
 
   try {
-    const { id } = req.params;
-    await Post.findByIdAndDelete(id);
+    await Post.findByIdAndDelete(req.params.id);
+    res.status(200).json('Post has been deleted!');
   } catch (error) {
     next(error);
   }
 };
 
 export const updatePost = async (req, res, next) => {
-  const { id } = req.params;
-  const listing = await Post.findById(id);
+  const post = await Post.findById(req.params.id);
 
   if (!post) {
     return next(errorHandler(404, "Post not found!"));
   }
 
-  if (req.user.id !== req.params.id) {
-    return next(errorHandler(401, "You can only update your own posts!"));
-  }
-
   try {
-    const { id } = req.params;
-    const updatedPost = await Post.findByIdAndUpdate(id, req.body, {
+    const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
     res.status(200).json(updatedPost);
@@ -55,8 +48,7 @@ export const updatePost = async (req, res, next) => {
 
 export const getPost = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const post = await Post.findById(id);
+    const post = await Post.findById(req.params.id);
 
     if (!post) {
       return next(errorHandler(404, "Post not found!"));
@@ -69,8 +61,7 @@ export const getPost = async (req, res, next) => {
 
 export const getPosts = async (req, res, next) => {
   try {
-    const posts = await Post.find({});
-
+    const posts = await Post.find({}).populate("userRef");
     return res.status(200).json(posts);
   } catch (error) {
     next(error);
