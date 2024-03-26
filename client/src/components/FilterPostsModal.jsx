@@ -8,7 +8,7 @@ const FilterPostsModal = ({ isOpen, onClose }) => {
           onClick={onClose}
         ></div>
         <div
-          className="bg-gray-800 p-8 absolute lg:top-80 lg:left-[680px] md:top-80 md:left-48 w-[580px] h-[340px] rounded-md"
+          className="bg-gray-800 p-8 absolute lg:top-80 lg:left-[680px] md:top-80 md:left-48 w-[580px] h-[240px] rounded-md"
           onClick={(e) => e.stopPropagation()}
         >
           <div
@@ -17,20 +17,29 @@ const FilterPostsModal = ({ isOpen, onClose }) => {
           >
             &times;
           </div>
-          <div className="flex flex-col items-center justify-center gap-y-2 opacity-100 text-gray-300">
-            <p className="text-gray-400">Add a title to your post:</p>
-            <input
-              type="text"
-              required
-              className="bg-gray-700 rounded-sm p-1 w-3/4 text-start outline-none focus:outline-gray-400"
-            />
-            <p className="text-gray-400">Type your post content here:</p>
-            <input
-              type="textarea"
-              required
-              style={{ paddingTop: "-5rem" }}
-              className="bg-gray-700 rounded-sm p-1 w-3/4 min-h-32 flex outline-none focus:outline-gray-400"
-            />
+          <div className="flex flex-col items-center justify-center gap-y-2 opacity-100 text-gray-300 mt-8">
+            <p className="text-gray-400">Filter posts by category:</p>
+            <select className="flex items-center justify-center rounded-md bg-gray-700 p-2 mt-2">
+              <option value="">Select a category</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="TypeScript">TypeScript</option>
+              <option value="Java">Java</option>
+              <option value="C#">C#</option>
+              <option value="C">C</option>
+              <option value="C++">C++</option>
+              <option value="Python">Python</option>
+              <option value="Go">Go</option>
+              <option value="Swift">Swift</option>
+              <option value="HTML">HTML</option>
+              <option value="CSS">CSS</option>
+              <option value="PHP">PHP</option>
+              <option value="Ruby">Ruby</option>
+              <option value="Rust">Rust</option>
+              <option value="Perl">Perl</option>
+              <option value="SQL">SQL</option>
+              <option value="NoSQL">NoSQL</option>
+              <option value="Database">Database</option>
+            </select>
           </div>
           <div className="flex items-center justify-center mt-5">
             <button
