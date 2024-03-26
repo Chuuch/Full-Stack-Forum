@@ -1,5 +1,24 @@
 // eslint-disable-next-line react/prop-types
-const DeletePostModal = ({ isOpen, onClose }) => {
+const DeletePostModal = ({ isOpen, onClose, postId }) => {
+
+  const handlePostDelete = async (postId) => {
+    try {
+      const response = await fetch(`/api/post/delete/${postId}`, {
+        method: 'DELETE',
+      });
+      const data = await response.json();
+
+      if (!data.success) {
+        console.log(data.message);
+        return;
+      }
+
+      setUser
+    } catch (error) {
+      
+    }
+  }
+
   return (
     isOpen && (
       <div className="fixed top-0 left-0 h-full w-full z-20">
@@ -18,7 +37,7 @@ const DeletePostModal = ({ isOpen, onClose }) => {
             &times;
           </div>
           <div>
-            <p className="flex items-center justify-center text-xl text-gray-300">
+            <p className="flex items-center justify-center text-lg text-gray-300">
               Are you sure you want to permanently delete this post? This action
               is irreversible.
             </p>
