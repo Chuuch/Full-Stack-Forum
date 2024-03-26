@@ -9,7 +9,7 @@ const Navbar = () => {
   const { currentUser } = useSelector((state) => state.user);
 
   return (
-    <div className="flex flex-row items-center justify-between p-3 bg-[#04102e] h-24">
+    <div className="flex flex-row sticky top-0 z-50 items-center justify-between p-3 bg-[#04102e] h-24">
       <div className="flex flex-row items-center justify-center gap-x-5 text-gray-400">
         <FaDev size={64} />
         <Clock />
