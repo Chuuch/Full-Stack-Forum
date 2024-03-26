@@ -15,6 +15,8 @@ import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import UserProfile from "./pages/UserProfile.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
+import EditPostModal from "./components/EditPostModal.jsx";
+import PostDetails from "./pages/PostDetails.jsx";
 
 const App = () => {
   return (
@@ -31,6 +33,8 @@ const App = () => {
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/edit/:postId" element={<EditPostModal />} />
+          <Route path="/forum/:postId" element={<PostDetails />} />
         </Route>
         <Route />
       </Routes>
