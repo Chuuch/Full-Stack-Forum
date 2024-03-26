@@ -13,6 +13,8 @@ const Forum = () => {
   const [isFilterModalOpen, setFilterModalOpen] = useState(false);
   const [isSortModalOpen, setSortModalOpen] = useState(false);
 
+  // TODO: Lift Edit & Delete in Forum then pass down props
+
   const openPostModal = () => {
     setPostModalOpen(true);
   };
@@ -88,7 +90,7 @@ const Forum = () => {
           Sort Posts
         </button>
       </div>
-      <div>
+      <div className="pb-10">
         <CreatePostModal isOpen={isPostModalOpen} onClose={closePostModal} />
         <FilterPostsModal
           isOpen={isFilterModalOpen}
@@ -96,9 +98,13 @@ const Forum = () => {
         />
         <SortPostsModal isOpen={isSortModalOpen} onClose={closeSortModal} />
       </div>
-      {posts.map((post, index) => (
-        <SinglePost post={post} key={index} />
-      ))}
+      <div className="flex flex-col gap-y-4 pb-4">
+        {posts.map(
+          (post, index) => (
+            console.log(posts), (<SinglePost post={post} key={index} />)
+          )
+        )}
+      </div>
     </div>
   );
 };
